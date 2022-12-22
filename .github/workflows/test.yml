@@ -159,6 +159,32 @@ jobs:
       - run: cat node_modules/package-prepare/output.txt
         name: cat output.txt
 
+  yarn-2-add:
+    name: yarn 2 - install dependency
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make URL
+        id: url
+        run: |
+          echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.sha }}" >> $GITHUB_OUTPUT
+      - run: echo "${{ steps.url.outputs.repo }}"
+      - run: |
+          echo '{"name": "fake-package", "packageManager": "yarn@2.4.3"}' > package.json
+      - run: |
+          sudo corepack enable
+          sudo corepack prepare yarn@stable --activate
+      - run: yarn --version
+      - run: yarn add package-prepare@"${{ steps.url.outputs.repo }}"
+        env:
+          FORCE_COLOR: true
+      - run: find * -not -path '*/\.git/*'
+        name: find *
+      - run: find * -not -path '*/\.git/*' -path '*/node_modules/package-prepare/*' | wc -l
+        name: Count node_modules files
+      - run: cat package.json
+      - run: cat node_modules/package-prepare/output.txt
+        name: cat output.txt
+
   yarn-3-add:
     name: yarn 3 - install dependency
     runs-on: ubuntu-latest
