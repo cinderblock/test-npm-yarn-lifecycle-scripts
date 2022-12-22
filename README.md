@@ -31,14 +31,14 @@ Simple repo to test which lifecycle scripts are run when using `npm`, `yarn`, an
 
 _Which lifecycle scripts were run? Which files were included in the package?_
 
-| Package Manager | `.npmignore` | Add as Dependency                      | Initial Setup             | Pack                                                                     |
-| --------------- | ------------ | -------------------------------------- | ------------------------- | ------------------------------------------------------------------------ |
-| npm             | ✅ _(4)_     | ✖️prepublish<br>✖️prepare<br>✖️prepare | 👀prepublish<br>👀prepare | 👀prepack<br>✖️prepare<br>👀postpack                                     |
-| pnpm            | ❌ _(12)_    | ✖️prepublish<br>✖️prepare              | 👀prepare                 | 👀prepublish<br>👀prepare<br>👀prepublishOnly<br>👀prepack<br>👀postpack |
-| yarn            | ✅ _(4)_     | 👀prepare                              | 👀prepublish<br>👀prepare | 👀prepack<br>👀postpack                                                  |
-| yarn PnP        | ❓ _(N/A)_   | 👀prepare                              | _N/A_                     | _N/A_                                                                    |
-| yarn 2          | ❓ _(N/A)_   | 👀prepack<br>👀postpack                | _N/A_                     | _N/A_                                                                    |
-| yarn 3          | ❓ _(N/A)_   | 👀prepack<br>👀postpack                | _N/A_                     | _N/A_                                                                    |
+| Package Manager | `.npmignore`                           | Add as Dependency                      | Initial Setup             | Pack                                                                     |
+| --------------- | -------------------------------------- | -------------------------------------- | ------------------------- | ------------------------------------------------------------------------ |
+| npm             | ✅ _(4)_                               | ✖️prepublish<br>✖️prepare<br>✖️prepare | 👀prepublish<br>👀prepare | 👀prepack<br>✖️prepare<br>👀postpack                                     |
+| pnpm            | ❌ _(12)_                              | ✖️prepublish<br>✖️prepare              | 👀prepare                 | 👀prepublish<br>👀prepare<br>👀prepublishOnly<br>👀prepack<br>👀postpack |
+| yarn            | ✅ _(4)_                               | 👀prepare                              | 👀prepublish<br>👀prepare | 👀prepack<br>👀postpack                                                  |
+| yarn PnP        | ❓ _(with `nodeLinker: node-modules`)_ | 👀prepare                              | _N/A_                     | _N/A_                                                                    |
+| yarn 2          | ✅ _(with `nodeLinker: node-modules`)_ | 👀prepack<br>👀postpack                | _N/A_                     | _N/A_                                                                    |
+| yarn 3          | ✅ _(with `nodeLinker: node-modules`)_ | 👀prepack<br>👀postpack                | _N/A_                     | _N/A_                                                                    |
 
 _👀/✖️ indicates associated logs were printed to terminal_
 
