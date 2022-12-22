@@ -174,7 +174,7 @@ jobs:
           sudo corepack enable
           sudo corepack prepare yarn@stable --activate
       - run: yarn --version
-      - run: yarn add "${{ steps.url.outputs.repo }}"
+      - run: yarn add package-prepare@"${{ steps.url.outputs.repo }}"
         env:
           FORCE_COLOR: true
       - run: find * -not -path '*/\.git/*'
