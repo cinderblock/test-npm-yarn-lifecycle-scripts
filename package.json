@@ -9,7 +9,11 @@
   ],
   "scripts": {
     "prepare": "node build.js prepare",
-    "prepack": "node build.js prepack"
+    "prepublish": "node build.js prepublish",
+    "prepublishOnly": "node build.js prepublishOnly",
+    "prepack": "node build.js prepack",
+    "postpack": "node build.js postpack",
+    "dependencies": "node build.js dependencies"
   },
   "author": "Cameron Tacklind <cameron@tacklind.com>",
   "license": "ISC"
