@@ -13,6 +13,7 @@
     "prepublishOnly": "node build.js prepublishOnly",
     "prepack": "node build.js prepack",
     "postpack": "node build.js postpack",
+    "postinstall": "node build.js postinstall",
     "dependencies": "node build.js dependencies"
   },
   "author": "Cameron Tacklind <cameron@tacklind.com>",

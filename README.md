@@ -11,6 +11,7 @@ Simple repo to test which lifecycle scripts are run when using `npm`, `yarn`, an
    - `prepack`
    - `postpack`
    - `dependencies`
+   - `postinstall`
 1. Run [various standard package manager commands](.github/workflows/test.yml) via [GitHub Actions](https://github.com/cinderblock/test-npm-yarn-lifecycle-scripts/actions)
    - `npm install`
    - `npm install <url>`
