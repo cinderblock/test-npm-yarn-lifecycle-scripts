@@ -6,12 +6,21 @@ process.argv.unshift(process.argv.splice(2, 1)[0]);
 
 const arg = process.argv.join(" - ");
 
-fs.appendFile("output.txt", arg + os.EOL).then(
-  () => {
-    console.log("Ran script:", arg);
-  },
-  (err) => {
-    console.log("Error in script:", arg);
-    console.log(err);
-  }
-);
+let num = null;
+
+fs.readFile("output.txt", "utf8")
+  .then(
+    ({ length }) => (num = length),
+    () => {}
+  )
+  .then(() =>
+    fs.appendFile("output.txt", arg + os.EOL).then(
+      () => {
+        console.log("Ran script:", arg, "output.txt was length:", num);
+      },
+      (err) => {
+        console.log("Error in script:", arg);
+        console.log(err);
+      }
+    )
+  );
