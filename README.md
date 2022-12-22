@@ -6,11 +6,11 @@ Simple repo to test which lifecycle scripts are run when using `npm`, `yarn`, an
 
 These are the results manually extracted from [the logs](https://github.com/cinderblock/test-npm-yarn-lifecycle-scripts/actions).
 
-| Package Manager (`x`) | Ignore | `x install/add <url>`  | `git clone && x install` | `git clone && x pack`  |
-| --------------------- | ------ | ---------------------- | ------------------------ | ---------------------- |
-| npm                   | ✔️     | ❌prepare<br>❌prepare | ✅prepare                | ✅prepack<br>❌prepare |
-| yarn                  | ✔️     | ✅prepare              | ✅prepare                | ✅prepack              |
-| pnpm                  | ❌     |                        | ✅prepare                | ✅prepare<br>✅prepack |
+| Package Manager | `.npmignore` | Add as Dependency      | Initial Setup | Pack                   |
+| --------------- | ------------ | ---------------------- | ------------- | ---------------------- |
+| npm             | ✔️           | ❌prepare<br>❌prepare | ✅prepare     | ✅prepack<br>❌prepare |
+| yarn            | ✔️           | ✅prepare              | ✅prepare     | ✅prepack              |
+| pnpm            | ❌           |                        | ✅prepare     | ✅prepare<br>✅prepack |
 
 _✅/❌ indicate if the logs were printed to terminal for the associated lifecycle script_
 
@@ -20,3 +20,4 @@ _✅/❌ indicate if the logs were printed to terminal for the associated lifecy
 1. Why does `npm pack` run both scripts, but the `prepare` script's output is never printed?
 1. Why doesn't `pnpm` respect `.npmignore`&`package.json#files` field?
 1. Why is `pnpm` a different order than `npm`?
+1. Which script(s) should be set so that a package can be consistently installed and setup in all package managers?

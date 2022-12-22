@@ -7,7 +7,7 @@ on:
 jobs:
   
   npm-install:
-    name: npm install <url>
+    name: npm - install dependency
     runs-on: ubuntu-latest
     steps:
       - name: Make URL
@@ -24,7 +24,7 @@ jobs:
       - run: cat node_modules/package-prepare/output.txt
 
   clone-npm-install:
-    name: Clone and npm install
+    name: npm - Initial setup install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -34,7 +34,7 @@ jobs:
       - run: cat output.txt
   
   npm-pack:
-    name: npm pack
+    name: npm - pack
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -44,7 +44,7 @@ jobs:
       - run: cat output.txt
 
   yarn-add:
-    name: yarn add <url>
+    name: yarn - install dependency
     runs-on: ubuntu-latest
     steps:
       - name: Make URL
@@ -61,7 +61,7 @@ jobs:
       - run: cat node_modules/package-prepare/output.txt
 
   clone-yarn-install:
-    name: Clone and yarn install
+    name: yarn - Initial setup install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -71,7 +71,7 @@ jobs:
       - run: cat output.txt
 
   yarn-pack:
-    name: yarn pack
+    name: yarn - pack
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -81,7 +81,7 @@ jobs:
       - run: cat output.txt
 
   pnpm-add:
-    name: pnpm add <url>
+    name: pnpm - install dependency
     runs-on: ubuntu-latest
     steps:
       - name: Make URL
@@ -99,7 +99,7 @@ jobs:
       - run: cat node_modules/package-prepare/output.txt
 
   clone-pnpm-install:
-    name: Clone and pnpm install
+    name: pnpm - Initial setup install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -110,7 +110,7 @@ jobs:
       - run: cat output.txt
 
   pnpm-pack:
-    name: pnpm pack
+    name: pnpm - pack
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
