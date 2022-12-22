@@ -1,0 +1,69 @@
+name: Test Install
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  
+  npm-install:
+    name: npm install <url>
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make URL
+        id: url
+        run: |
+          echo "repo=${{ github.server_url }}/${{ github.repository }}.git#refs/heads/${{ github.ref }}" >> $GITHUB_OUTPUT
+      - run: echo "${{ steps.url.outputs.repo }}"
+      - run: npm --version
+      - run: npm install "${{ steps.url.outputs.repo }}"
+      - run: cat output.txt
+
+  clone-npm-install:
+    name: Clone and npm install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm --version
+      - run: npm install
+      - run: cat output.txt
+  
+  npm-pack:
+    name: npm pack
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm --version
+      - run: npm pack
+      - run: cat output.txt
+
+  yarn-add:
+    name: yarn add <url>
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make URL
+        id: url
+        run: |
+          echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.ref }}" >> $GITHUB_OUTPUT
+      - run: echo "${{ steps.url.outputs.repo }}"
+      - run: yarn --version
+      - run: yarn --color=always add "${{ steps.url.outputs.repo }}"
+      - run: cat output.txt
+
+  clone-yarn-install:
+    name: Clone and yarn install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn --version
+      - run: yarn --color=always install
+      - run: cat output.txt
+
+  yarn-pack:
+    name: yarn pack
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: yarn --version
+      - run: yarn --color=always pack
+      - run: cat output.txt

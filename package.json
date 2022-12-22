@@ -1,0 +1,12 @@
+{
+  "name": "package-prepare",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "node build.js prepare",
+    "prepack": "node build.js prepack"
+  },
+  "author": "Cameron Tacklind <cameron@tacklind.com>",
+  "license": "ISC"
+}
