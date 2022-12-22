@@ -6,13 +6,13 @@ Simple repo to test which lifecycle scripts are run when using `npm`, `yarn`, an
 
 These are the results manually extracted from [the logs](https://github.com/cinderblock/test-npm-yarn-lifecycle-scripts/actions).
 
-| Package Manager | `.npmignore`        | Add as Dependency  | Initial Setup | Pack                   |
-| --------------- | ------------------- | ------------------ | ------------- | ---------------------- |
-| npm             | ✅                  | prepare<br>prepare | prepare👀     | prepack👀<br>prepare   |
-| pnpm            | Doesn't cleanup     |                    | prepare👀     | prepare👀<br>prepack👀 |
-| yarn            | ✅                  | prepare👀          | prepare👀     | prepack👀              |
-| yarn PnP        | _No `node_modules`_ | prepare👀          | _N/A_         | _N/A_                  |
-| yarn 3          | _No `node_modules`_ | prepack👀          | _N/A_         | _N/A_                  |
+| Package Manager | `.npmignore`        | Add as Dependency                | Initial Setup             | Pack                                                                     |
+| --------------- | ------------------- | -------------------------------- | ------------------------- | ------------------------------------------------------------------------ |
+| npm             | ✅                  | prepublish<br>prepare<br>prepare | prepublish👀<br>prepare👀 | prepack👀<br>prepare<br>postpack👀                                       |
+| pnpm            | Doesn't cleanup     | prepublish<br>prepare            | prepare👀                 | prepublish👀<br>prepare👀<br>prepublishOnly👀<br>prepack👀<br>postpack👀 |
+| yarn            | ✅                  | prepare👀                        | prepublish👀<br>prepare👀 | prepack👀<br>postpack👀                                                  |
+| yarn PnP        | _No `node_modules`_ | prepare👀                        | _N/A_                     | _N/A_                                                                    |
+| yarn 3          | _No `node_modules`_ | prepack👀<br>postpack👀          | _N/A_                     | _N/A_                                                                    |
 
 _👀 indicates associated logs were printed to terminal_
 
