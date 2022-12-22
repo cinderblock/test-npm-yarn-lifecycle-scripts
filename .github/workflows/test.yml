@@ -15,10 +15,13 @@ jobs:
         run: |
           echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.ref }}" >> $GITHUB_OUTPUT
       - run: echo "${{ steps.url.outputs.repo }}"
+      - run: |
+          echo '{"name": "fake-package"}' > package.json
       - run: npm --version
       - run: npm install "${{ steps.url.outputs.repo }}"
       - run: find .
-      - run: cat output.txt
+      - run: cat package.json
+      - run: cat node_modules/package-prepare/output.txt
 
   clone-npm-install:
     name: Clone and npm install
@@ -49,10 +52,13 @@ jobs:
         run: |
           echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.ref }}" >> $GITHUB_OUTPUT
       - run: echo "${{ steps.url.outputs.repo }}"
+      - run: |
+          echo '{"name": "fake-package"}' > package.json
       - run: yarn --version
       - run: yarn --color=always add "${{ steps.url.outputs.repo }}"
       - run: find .
-      - run: cat output.txt
+      - run: cat package.json
+      - run: cat node_modules/package-prepare/output.txt
 
   clone-yarn-install:
     name: Clone and yarn install
