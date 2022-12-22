@@ -13,7 +13,7 @@ jobs:
       - name: Make URL
         id: url
         run: |
-          echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.ref }}" >> $GITHUB_OUTPUT
+          echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.sha }}" >> $GITHUB_OUTPUT
       - run: echo "${{ steps.url.outputs.repo }}"
       - run: |
           echo '{"name": "fake-package"}' > package.json
@@ -50,7 +50,7 @@ jobs:
       - name: Make URL
         id: url
         run: |
-          echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.ref }}" >> $GITHUB_OUTPUT
+          echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.sha }}" >> $GITHUB_OUTPUT
       - run: echo "${{ steps.url.outputs.repo }}"
       - run: |
           echo '{"name": "fake-package"}' > package.json
@@ -87,7 +87,7 @@ jobs:
       - name: Make URL
         id: url
         run: |
-          echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.ref }}" >> $GITHUB_OUTPUT
+          echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.sha }}" >> $GITHUB_OUTPUT
       - run: echo "${{ steps.url.outputs.repo }}"
       - run: |
           echo '{"name": "fake-package"}' > package.json
