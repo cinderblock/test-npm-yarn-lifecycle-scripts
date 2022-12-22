@@ -12,7 +12,7 @@ These are the results manually extracted from [the logs](https://github.com/cind
 | pnpm            | Doesn't cleanup   |                    | prepare👀     | prepare👀<br>prepack👀 |
 | yarn            | ✅                | prepare👀          | prepare👀     | prepack👀              |
 | yarn PnP        | No `node_modules` | prepare👀          | _N/A_         | _N/A_                  |
-| yarn 2          | No `node_modules` | prepare👀          | _N/A_         | _N/A_                  |
+| yarn 3          |                   |                    | _N/A_         | _N/A_                  |
 
 _👀 indicates associated logs were printed to terminal_
 

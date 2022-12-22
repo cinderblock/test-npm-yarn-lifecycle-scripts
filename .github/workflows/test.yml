@@ -159,8 +159,8 @@ jobs:
       - run: cat node_modules/package-prepare/output.txt
         name: cat output.txt
 
-  yarn-2-add:
-    name: yarn 2 - install dependency
+  yarn-3-add:
+    name: yarn 3 - install dependency
     runs-on: ubuntu-latest
     steps:
       - name: Make URL
@@ -174,7 +174,9 @@ jobs:
           sudo corepack enable
           sudo corepack prepare yarn@stable --activate
       - run: yarn --version
-      - run: yarn --color=always add "${{ steps.url.outputs.repo }}"
+      - run: yarn add "${{ steps.url.outputs.repo }}"
+        env:
+          FORCE_COLOR: true
       - run: find * -not -path '*/\.git/*'
         name: find *
       - run: find * -not -path '*/\.git/*' -path '*/node_modules/package-prepare/*' | wc -l
