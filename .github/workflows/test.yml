@@ -79,3 +79,43 @@ jobs:
       - run: yarn --color=always pack
       - run: find . -not -path '*/\.git/*'
       - run: cat output.txt
+
+  pnpm-add:
+    name: pnpm add <url>
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make URL
+        id: url
+        run: |
+          echo "repo=${{ github.server_url }}/${{ github.repository }}.git#${{ github.ref }}" >> $GITHUB_OUTPUT
+      - run: echo "${{ steps.url.outputs.repo }}"
+      - run: |
+          echo '{"name": "fake-package"}' > package.json
+      - run: sudo npm -g install pnpm
+      - run: pnpm --version
+      - run: pnpm add "${{ steps.url.outputs.repo }}"
+      - run: find . -not -path '*/\.git/*'
+      - run: cat package.json
+      - run: cat node_modules/package-prepare/output.txt
+
+  clone-pnpm-install:
+    name: Clone and pnpm install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo npm -g install pnpm
+      - run: pnpm --version
+      - run: pnpm install
+      - run: find . -not -path '*/\.git/*'
+      - run: cat output.txt
+
+  pnpm-pack:
+    name: pnpm pack
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo npm -g install pnpm
+      - run: pnpm --version
+      - run: pnpm pack
+      - run: find . -not -path '*/\.git/*'
+      - run: cat output.txt
