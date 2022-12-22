@@ -21,7 +21,7 @@ jobs:
       - run: npm install "${{ steps.url.outputs.repo }}"
       - run: find * -not -path '*/\.git/*'
         name: find *
-      - run: find * -not -path '*/\.git/*' -path '*/node_modules/package-prepare/*' | wc -l
+      - run: find * -not -path '*/\.git/*' -path 'node_modules/package-prepare/*' | wc -l
         name: Count node_modules files
       - run: cat package.json
       - run: cat node_modules/package-prepare/output.txt
@@ -64,7 +64,7 @@ jobs:
       - run: yarn --color=always add "${{ steps.url.outputs.repo }}"
       - run: find * -not -path '*/\.git/*'
         name: find *
-      - run: find * -not -path '*/\.git/*' -path '*/node_modules/package-prepare/*' | wc -l
+      - run: find * -not -path '*/\.git/*' -path 'node_modules/package-prepare/*' | wc -l
         name: Count node_modules files
       - run: cat package.json
       - run: cat node_modules/package-prepare/output.txt
@@ -108,7 +108,7 @@ jobs:
       - run: pnpm add "${{ steps.url.outputs.repo }}"
       - run: find * -not -path '*/\.git/*'
         name: find *
-      - run: find * -not -path '*/\.git/*' -path '*/node_modules/package-prepare/*' | wc -l
+      - run: find * -not -path '*/\.git/*' -path 'node_modules/package-prepare/*' | wc -l
         name: Count node_modules files
       - run: cat package.json
       - run: cat node_modules/package-prepare/output.txt
@@ -154,7 +154,7 @@ jobs:
       - run: yarn --color=always add "${{ steps.url.outputs.repo }}"
       - run: find * -not -path '*/\.git/*'
         name: find *
-      - run: find * -not -path '*/\.git/*' -path '*/node_modules/package-prepare/*' | wc -l
+      - run: find * -not -path '*/\.git/*' -path 'node_modules/package-prepare/*' | wc -l
         name: Count node_modules files
       - run: cat package.json
       - run: cat node_modules/package-prepare/output.txt
@@ -181,7 +181,7 @@ jobs:
           FORCE_COLOR: true
       - run: find * -not -path '*/\.git/*'
         name: find *
-      - run: find * -not -path '*/\.git/*' -path '*/node_modules/package-prepare/*' | wc -l
+      - run: find * -not -path '*/\.git/*' -path 'node_modules/package-prepare/*' | wc -l
         name: Count node_modules files
       - run: cat package.json
       - run: cat node_modules/package-prepare/output.txt
@@ -208,7 +208,7 @@ jobs:
           FORCE_COLOR: true
       - run: find * -not -path '*/\.git/*'
         name: find *
-      - run: find * -not -path '*/\.git/*' -path '*/node_modules/package-prepare/*' | wc -l
+      - run: find * -not -path '*/\.git/*' -path 'node_modules/package-prepare/*' | wc -l
         name: Count node_modules files
       - run: cat package.json
       - run: cat node_modules/package-prepare/output.txt
