@@ -1,15 +1,4 @@
 {
-  "name": "package-prepare",
-  "version": "0.0.0",
-  "description": "Simple package to test which lifecycle scripts are run when using npm and yarn to install the package via git.",
-  "main": "build.js",
-  "files": [
-    "output.txt"
-  ],
-  "scripts": {
-    "prepare": "node build.js prepare",
-    "prepack": "node build.js prepack"
-  },
-  "author": "Cameron Tacklind <cameron@tacklind.com>",
-  "license": "ISC"
+  "name": "package prepare",
+  "packageManager": "yarn@3.3.1"
 }

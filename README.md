@@ -6,13 +6,15 @@ Simple repo to test which lifecycle scripts are run when using `npm`, `yarn`, an
 
 These are the results manually extracted from [the logs](https://github.com/cinderblock/test-npm-yarn-lifecycle-scripts/actions).
 
-| Package Manager | `.npmignore` | Add as Dependency      | Initial Setup | Pack                   |
-| --------------- | ------------ | ---------------------- | ------------- | ---------------------- |
-| npm             | ✔️           | ❌prepare<br>❌prepare | ✅prepare     | ✅prepack<br>❌prepare |
-| yarn            | ✔️           | ✅prepare              | ✅prepare     | ✅prepack              |
-| pnpm            | ❌           |                        | ✅prepare     | ✅prepare<br>✅prepack |
+| Package Manager | `.npmignore`      | Add as Dependency  | Initial Setup | Pack                   |
+| --------------- | ----------------- | ------------------ | ------------- | ---------------------- |
+| npm             | ✅                | prepare<br>prepare | prepare👀     | prepack👀<br>prepare   |
+| pnpm            | Doesn't cleanup   |                    | prepare👀     | prepare👀<br>prepack👀 |
+| yarn            | ✅                | prepare👀          | prepare👀     | prepack👀              |
+| yarn PnP        | No `node_modules` | prepare👀          | _N/A_         | _N/A_                  |
+| yarn 2          | No `node_modules` | prepare👀          | _N/A_         | _N/A_                  |
 
-_✅/❌ indicate if the logs were printed to terminal for the associated lifecycle script_
+_👀 indicates associated logs were printed to terminal_
 
 ### Questions
 
