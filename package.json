@@ -1,5 +1,6 @@
 {
   "name": "package-prepare",
+  "private": true,
   "version": "0.0.0",
   "description": "Simple package to test which lifecycle scripts are run when using npm and yarn to install the package via git.",
   "main": "build.js",
