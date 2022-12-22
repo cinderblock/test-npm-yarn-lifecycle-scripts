@@ -37,7 +37,7 @@ _Which lifecycle scripts were run? Which files were included in the package?_
 | pnpm            | ❌ _(12)_    | ✖️prepublish<br>✖️prepare              | 👀prepare                 | 👀prepublish<br>👀prepare<br>👀prepublishOnly<br>👀prepack<br>👀postpack |
 | yarn            | ✅ _(4)_     | 👀prepare                              | 👀prepublish<br>👀prepare | 👀prepack<br>👀postpack                                                  |
 | yarn PnP        | ❓ _(N/A)_   | 👀prepare                              | _N/A_                     | _N/A_                                                                    |
-| yarn 2          | ❓ _(N/A)_   |                                        | _N/A_                     | _N/A_                                                                    |
+| yarn 2          | ❓ _(N/A)_   | 👀prepack<br>👀postpack                | _N/A_                     | _N/A_                                                                    |
 | yarn 3          | ❓ _(N/A)_   | 👀prepack<br>👀postpack                | _N/A_                     | _N/A_                                                                    |
 
 _👀/✖️ indicates associated logs were printed to terminal_
