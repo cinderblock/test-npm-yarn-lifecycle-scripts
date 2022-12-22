@@ -149,6 +149,7 @@ jobs:
       - run: echo "${{ steps.url.outputs.repo }}"
       - run: |
           echo '{"name": "fake-package", "installConfig": {"pnp": true}}' > package.json
+          echo 'nodeLinker: node-modules' > .yarnrc.yml
       - run: yarn --version
       - run: yarn --color=always add "${{ steps.url.outputs.repo }}"
       - run: find * -not -path '*/\.git/*'
@@ -170,6 +171,7 @@ jobs:
       - run: echo "${{ steps.url.outputs.repo }}"
       - run: |
           echo '{"name": "fake-package", "packageManager": "yarn@2.4.3"}' > package.json
+          echo 'nodeLinker: node-modules' > .yarnrc.yml
       - run: |
           sudo corepack enable
           sudo corepack prepare yarn@stable --activate
@@ -196,6 +198,7 @@ jobs:
       - run: echo "${{ steps.url.outputs.repo }}"
       - run: |
           echo '{"name": "fake-package", "packageManager": "yarn@3.3.1"}' > package.json
+          echo 'nodeLinker: node-modules' > .yarnrc.yml
       - run: |
           sudo corepack enable
           sudo corepack prepare yarn@stable --activate
