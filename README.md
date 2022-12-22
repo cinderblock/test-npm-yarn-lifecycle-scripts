@@ -32,20 +32,21 @@ Simple repo to test which lifecycle scripts are run when using `npm`, `yarn`, an
 
 _Which lifecycle scripts were run? Which files were included in the package?_
 
-| Package Manager | `.npmignore`             | Add as Dependency                      | Initial Setup             | Pack                                                                     |
-| --------------- | ------------------------ | -------------------------------------- | ------------------------- | ------------------------------------------------------------------------ |
-| npm             | ✅ _(4)_                 | ✖️prepublish<br>✖️prepare<br>✖️prepare | 👀prepublish<br>👀prepare | 👀prepack<br>✖️prepare<br>👀postpack                                     |
-| pnpm            | ❌ _(12)_                | ✖️prepublish<br>✖️prepare              | 👀prepare                 | 👀prepublish<br>👀prepare<br>👀prepublishOnly<br>👀prepack<br>👀postpack |
-| yarn            | ✅ _(4)_                 | 👀prepare                              | 👀prepublish<br>👀prepare | 👀prepack<br>👀postpack                                                  |
-| yarn PnP        | ❓ _(with `nodeLinker`)_ | 👀prepare                              | _N/A_                     | _N/A_                                                                    |
-| yarn 2          | ✅ _(with `nodeLinker`)_ | 👀prepack<br>👀postpack                | _N/A_                     | _N/A_                                                                    |
-| yarn 3          | ✅ _(with `nodeLinker`)_ | 👀prepack<br>👀postpack                | _N/A_                     | _N/A_                                                                    |
+| Package Manager | `.npmignore`             | Add as Dependency                                                                               | Initial Setup                              | Pack                                                                     |
+| --------------- | ------------------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------ |
+| npm             | ✅ _(4)_                 | ✖️prepublish<br>✖️prepare<br>✖️prepare<br>✖️postinstall                                         | 👀postinstall<br>👀prepublish<br>👀prepare | 👀prepack<br>✖️prepare<br>👀postpack                                     |
+| pnpm            | ❌ _(12)_                | ✖️postinstall<br>✖️prepublish<br>✖️prepare<br>👀postinstall                                     | 👀postinstall<br>👀prepare                 | 👀prepublish<br>👀prepare<br>👀prepublishOnly<br>👀prepack<br>👀postpack |
+| yarn            | ✅ _(4)_                 | 👀postinstall<br>👀prepare<br>✖️postinstall                                                     | 👀postinstall<br>👀prepublish<br>👀prepare | 👀prepack<br>👀postpack                                                  |
+| yarn PnP        | ❓ _(with `nodeLinker`)_ | _(Inferred)_<br>👀postinstall<br>👀prepare                                                      | _N/A_                                      | _N/A_                                                                    |
+| yarn 2          | ✅ _(with `nodeLinker`)_ | ✖️postinstall _(in `/tmp`)_<br>👀prepack<br>👀postpack<br>✖️postinstall _(in `./node_modules`)_ | _N/A_                                      | _N/A_                                                                    |
+| yarn 3          | ✅ _(with `nodeLinker`)_ | ✖️postinstall _(in `/tmp`)_<br>👀prepack<br>👀postpack<br>✖️postinstall _(in `./node_modules`)_ | _N/A_                                      | _N/A_                                                                    |
 
 _👀/✖️ indicates associated logs were printed to terminal_
 
 ### Questions
 
 1. Why does `npm install <url>` run the `prepare` script twice?
+1. Why does `yarn install <url>` run the `postinstall` script twice but only outputs once?
 1. Why does `npm pack` run both scripts, but the `prepare` script's output is never printed?
 1. Why doesn't `pnpm` respect `.npmignore`&`package.json#files` field?
 1. Why is `pnpm` a different order than `npm`?
